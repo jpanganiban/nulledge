@@ -2,6 +2,11 @@
 
 A bunch of summarized knowledge.
 
+## Acquiring Nulledge
+
+Whenever you are about to do something, open the most relevant nulledge. If it
+doesn't exist yet, create a new one.
+
 ## Legend / Labels
 
 - - Observed behavior.
