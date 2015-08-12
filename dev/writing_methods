@@ -1,0 +1,53 @@
+Writing Methods
+
+* Write a method.
+* Write unit tests for that method.
+* Make unit tests pass.
+* Proceed to slim-down the method by chopping it into smaller methods.
+
+- Refactor with confidence.
+
++ Methods unaffeted by external state are easiest to test.
+
+x Methods affected by external state are difficult to test. External state are
+  different from time to time.
+
+x Mocking external calls during tests requires you to patch a method. Also, it
+  requires you to know the internal workings of the method. No longer blackbox.
+
++ External calls can be replaced with methods as an argument. You can now easily
+  test the behavior of a function without mocking. Here's an example:
+
+  # In this example, we have a function that sends an email. This calls an
+  # external service that sends an email. The response of this external service
+  # can be either "successful" or "unsuccessful"
+  def send_email(to, from, subject, body):
+      response = email_service.send(to, from, subject, body)
+
+      # If email_service.send is successful, return True
+      if response == "successful":
+          return True
+
+      # Otherwise, False.
+      return False
+
+  send_email("foo", "bar", "baz", "bax")  # We don't have control.
+
+  # By slightly changing how send_email works, we can remove the external call
+  # completely in this function. Now, we make it work according to how we like.
+  def send_email(to, from, subject, body, send_email_fn):
+      response = send_email_fn(to, from, subject, body)
+
+      if response = "successful":
+          return True
+
+      return False
+
+  def send_email_successful(to, from, subject, body):
+      return "successful"
+
+  def send_email_unsuccessful(to, from, subject, body):
+      return "unsuccessful"
+
+  send_email("foo", "bar", "baz", "bax", send_email_successful)  # Returns True
+  send_email("foo", "bar", "baz", "bax", send_email_unsuccessful)  # Returns False
