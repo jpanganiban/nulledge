@@ -1,0 +1,11 @@
+Installing a Python Package
+
+* Run `pip install <package name>`.
+* Save the currently installed packages to `requirements.txt` if needed. Run `pip freeze > requirements.txt`.
++ It's ok not to use virtualenv inside a docker container.
+- Only one instance of a package is installed within an environment (system, virtualenv).
+- Running `pip install -U <package name>` upgrades the package to its latest version.
+- Running `pip install <package name>==<version>` installs the specified version of this python package.
+- Using `sudo pip install <package name>` will install the python package system-wide.
+x Overwrritten system-used packages might break your system.
+x Unless you intend to install the package system-wide, use an isolation like virtualenv.

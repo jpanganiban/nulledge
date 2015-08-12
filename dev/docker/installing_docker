@@ -1,0 +1,5 @@
+Installing Docker
+
+* `curl -sSL https://get.docker.com | sh`
+- Installing via the `https://get.docker.com` script installs the latest version of docker.
+< Installing a specific version of docker from the `https://get.docker.com` script.
