@@ -2,10 +2,14 @@
 
 A bunch of summarized knowledge.
 
-## Acquiring Nulledge
+## Using Nulledge
 
-Whenever you are about to do something, open the most relevant nulledge. If it
-doesn't exist yet, create a new one.
+- Whenever you are about to do something, open the most relevant nulledge. If it
+  doesn't exist yet, create a new one.
+
+* Read through all the items listed. You are being briefed by your expreinece.
+
++ Take it easy. Do it slowly. Be mindful. This is what you're doing now.
 
 ## Legend / Labels
 
