@@ -8,7 +8,7 @@ Writing Methods
 
 + Methods unaffeted by external state are easiest to test.
 
-x Refactoring could cost you re-writing some of the unit tests.
+x Refactoring the method interface could cost you re-writing some of the unit tests.
 
 x Methods affected by external state are difficult to test. External state are
   different from time to time.
