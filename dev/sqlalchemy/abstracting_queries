@@ -1,0 +1,40 @@
+Abstracting Queries
+
+x Passing dynamic filter/filter_by as *args, **kwargs is a bad idea. Queries
+  become ambiguous thus harder to predict and optimize. Here's an example of
+  this practice:
+
+  # This is a query that requires a composite index of the following properties
+  # in order for this to be fast: id, created_at, status. But since the method
+  # retrieve_a_set is dynamic, users of this method can potentially write
+  # slow queries hidden deep within the application.
+
+  @classmethod
+  def retrieve_a_set(cls, *args, **kwargs):
+      q = cls.query
+      q = q.filter(*args)
+      q = q.filter_by(**kwargs)
+      return q.all()
+
+  cls.retrieve_a_set(
+      cls.id <= 5,
+      cls.created_at > datetime.utcnow(),
+      cls.status.in_(["COMPLETED", "PENDING", "STARTED"])
+  )
+
++ To improve maintainability and optimizability, write specific methods for
+  specific queries. Here's an example:
+
+  @classmethod
+  def retrieve_by_id_date_status(cls, id=None, created_at=None, status=None):
+      q = cls.query
+      q = q.filter(id)
+      q = q.filter(created_at)
+      q = q.filter(status)
+      return q.all()
+
+  cls.retrieve_by_id_date_status(
+      id_query=cls.id <= 5,
+      created_at=cls.created > datetime.utcnow(),
+      status=cls.status.in_(["COMPLETED", "PENDING", "STARTED"])
+  )
