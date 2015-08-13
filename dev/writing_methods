@@ -1,13 +1,14 @@
 Writing Methods
 
-* Write a method.
-* Write unit tests for that method.
-* Make unit tests pass.
+* Design method by writing unit tests.
+* Fill-in method body to make unit tests pass.
 * Proceed to slim-down the method by chopping it into smaller methods.
 
 - Refactor with confidence.
 
 + Methods unaffeted by external state are easiest to test.
+
+x Refactoring could cost you re-writing some of the unit tests.
 
 x Methods affected by external state are difficult to test. External state are
   different from time to time.
